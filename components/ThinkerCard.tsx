@@ -28,11 +28,11 @@ export function ThinkerCard({ thinker, response }: ThinkerCardProps) {
 
       {isLoading && (
         <div className="space-y-3">
-          {[...Array(5)].map((_, i) => (
+          {[...Array(3)].map((_, i) => (
             <div
               key={i}
               className="h-4 bg-[#E5D9C3] rounded animate-pulse"
-              style={{ width: `${85 - i * 10}%` }}
+              style={{ width: `${90 - i * 15}%` }}
             />
           ))}
         </div>
@@ -45,15 +45,29 @@ export function ThinkerCard({ thinker, response }: ThinkerCardProps) {
       )}
 
       {response?.status === "done" && response.heuristics.length > 0 && (
-        <ul className="space-y-3">
-          {response.heuristics.map((h, i) => (
-            <li
-              key={i}
-              className="font-serif text-[#3D2F23] leading-relaxed pl-4 border-l-2 border-[#D4A574]"
-            >
-              {h}
-            </li>
-          ))}
+        <ul className="space-y-4">
+          {response.heuristics.map((h, i) => {
+            const colonIndex = h.indexOf(":");
+            const hasFramework = colonIndex > 0 && colonIndex < 40;
+            const framework = hasFramework ? h.slice(0, colonIndex) : null;
+            const content = hasFramework ? h.slice(colonIndex + 1).trim() : h;
+
+            return (
+              <li
+                key={i}
+                className="pl-4 border-l-2 border-[#D4A574]"
+              >
+                {framework && (
+                  <span className="block text-xs font-sans text-[#C97D60] font-medium uppercase tracking-wide mb-1">
+                    {framework}
+                  </span>
+                )}
+                <span className="font-serif text-[#3D2F23] leading-relaxed">
+                  {content}
+                </span>
+              </li>
+            );
+          })}
         </ul>
       )}
 

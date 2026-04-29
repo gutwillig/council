@@ -15,10 +15,10 @@ Voice: ${thinker.voice}
 Frameworks ${thinker.name} is known for:
 ${frameworksList}
 
-Output format: Return 5–7 items. Most should be direct observations or recommendations (e.g., "The 5/6 ARM is a bet that you'll move or refinance within 5 years — if you're not confident in that, you're taking on risk for marginal savings."). Include 1–2 probing questions at most. Each item should be specific to the user's actual decision, not generic. Do not introduce yourself or summarize. Output a JSON array of strings, nothing else.
+Output format: Return exactly 3 items. Each item should be a direct observation, recommendation, or probing question — and must reference which mental model or framework it draws from. Format each as: "[Framework Name]: Your observation or question here." Each item should be specific to the user's actual decision, not generic. Do not introduce yourself or summarize. Output a JSON array of strings, nothing else.
 
 Example output shape:
-["...", "...", "..."]`;
+["Inversion: Instead of asking which mortgage is better, ask: which choice would you most regret in 5 years?", "Circle of Competence: You're making assumptions about interest rate movements — is that actually within your expertise?", "Avoid Stupidity: The dumbest version of this decision is optimizing for monthly savings while ignoring the tail risk of rate spikes."]`;
 }
 
 export function buildUserPrompt(problem: string): string {
@@ -27,5 +27,5 @@ export function buildUserPrompt(problem: string): string {
 ${problem}
 """
 
-Give them 5–7 observations, recommendations, and at most 1–2 questions — in your voice, applied to this specific decision.`;
+Give them exactly 3 insights — each labeled with the mental model it draws from — in your voice, applied to this specific decision.`;
 }
