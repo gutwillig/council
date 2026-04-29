@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Council",
-  description: "Borrow the mental models of our world's greatest thinkers.",
+  description: "Borrow the mental models of history's greatest thinkers for your hardest decisions.",
 };
 
 export default function RootLayout({

@@ -138,7 +138,7 @@ export default function Home() {
             Council
           </h1>
           <p className="text-[#7A6855] font-sans text-lg">
-            Borrow the mental models of our world's greatest thinkers.
+            Borrow the mental models of history's greatest thinkers for your hardest decisions.
           </p>
         </div>
 
