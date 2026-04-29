@@ -12,9 +12,11 @@ import type { Thinker, ThinkerResponse } from "@/types";
 export default function Home() {
   const [problem, setProblem] = useState("");
   const [allThinkers, setAllThinkers] = useState<Thinker[]>(DEFAULT_THINKERS);
-  const [selectedIds, setSelectedIds] = useState<string[]>(
-    DEFAULT_THINKERS.map((t) => t.id)
-  );
+  const [selectedIds, setSelectedIds] = useState<string[]>([
+    "naval-ravikant",
+    "charlie-munger",
+    "ben-franklin",
+  ]);
   const [responses, setResponses] = useState<Record<string, ThinkerResponse>>(
     {}
   );
